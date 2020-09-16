@@ -3,8 +3,8 @@
 
 @setup
     $repository = 'https://github.com/avp365/php_constr_laravel.git';
-    $releases_dir = '/var/www/app/releases';
-    $app_dir = '/ext_www';
+    $releases_dir = '/ext_www/homework-v.loc'
+    $project_dir = 'ext_www';
 @endsetup
 
 
@@ -15,12 +15,13 @@
 
 
 @task('clone_repository', ['on' => 'web'])
-    cd /ext_www
-    git clone --single-branch --branch {{ $repository }}  homework-v.loc
+    cd {{$project_dir}}
+    rm -R homework-v.loc
+    git clone {{ $repository }}  {{$dir}}
 @endtask
 
-@task('composer')
-    echo "Starting deployment ({{ $release }})"
+@task('run_composer')
+    echo "Starting deployment"
     cd {{ $releases_dir }}
 
     composer install --prefer-dist --no-scripts -q -o
