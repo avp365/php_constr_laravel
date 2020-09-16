@@ -11,6 +11,7 @@
 @story('deploy')
     clone_repository
     run_composer
+    tests
 @endstory
 
 
@@ -23,7 +24,9 @@
 @task('run_composer')
     echo "Starting deployment"
     cd {{$project_dir}}'/'{{$dir}}
-ls
     composer install --prefer-dist --no-scripts -q -o
 @endtask
 
+@task('tests')
+php vendor/bin/phpunit --testdox
+@endtask
