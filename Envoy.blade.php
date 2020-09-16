@@ -3,7 +3,7 @@
 
 @setup
     $repository = 'https://github.com/avp365/php_constr_laravel.git';
-    $releases_dir = '/ext_www/homework-v.loc'
+    $dir = 'homework-v.loc';
     $project_dir = 'ext_www';
 @endsetup
 
@@ -22,8 +22,8 @@
 
 @task('run_composer')
     echo "Starting deployment"
-    cd {{ $releases_dir }}
-
+    cd {{$project_dir}}'/'{{$dir}}
+ls
     composer install --prefer-dist --no-scripts -q -o
 @endtask
 
