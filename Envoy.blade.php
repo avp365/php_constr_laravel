@@ -17,7 +17,7 @@
 @task('clone_repository', ['on' => 'web'])
     cd {{$project_dir}}
     rm -R homework-v.loc
-    git clone {{ $repository }}  {{$dir}}
+    git clone --single-branch --branch envoy {{ $repository }}  {{$dir}}
 @endtask
 
 @task('run_composer')
